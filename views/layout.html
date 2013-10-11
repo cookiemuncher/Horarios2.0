@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body style="padding: 10px;">
+        <div class="nav pull-right">
+            {% block nav %}
+            {% if isAdmin %}
+            <span>{{data.firstname}}</span>
+            <a href="{{ routes.logout }}" class="btn">
+                <i class="icon-fire"></i>
+                Log out
+            </a>
+            {% else %}
+            <a href="{{ routes.login }}" class="btn">
+                <i class="icon-user"></i>
+                Log in
+            </a>
+            <a href="{{ routes.login }}" class="btn">
+                <i class="icon-user"></i>
+                Registrar
+            </a>
+            {% endif %}
+            {% endblock nav %}
+        </div>
+
+
+        <div style="width: 900px; margin: auto;">
+        {% block content %}{% endblock content %}
+        </div>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
+</html>
