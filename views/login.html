@@ -9,20 +9,6 @@
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-<<<<<<< HEAD
-    <form class="form-signin" action="{{ app.locals.routes.login }}" method="post" />
-      <h2 class="form-signin-heading">Login</h2>
-        <h2 class="form-signin-heading">Please sign in</h2>
-      
-      <label>Login</label>
-      <input class="input-block-level" type="text" placeholder="admin" name="usuario">
-
-      <label>Password</label>
-      <input class="input-block-level" type="password" placeholder="password" name="password">
-      
-      <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-      
-=======
       <form class="form-signin" action="{{ app.locals.routes.login }}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <input type="text" class="form-control" placeholder="Usuario" autofocus name="usuario">
@@ -32,7 +18,6 @@
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
->>>>>>> horarios bonito
         {% if error %}
         <br/>
         <br/>
@@ -40,11 +25,7 @@
             <strong>Warning!</strong> {{ error }}
         </div>
         {% endif %}
-<<<<<<< HEAD
-    </form>
-=======
->>>>>>> horarios bonito
-    </div>
   </div>
+</div>
 </div>
 {% endblock %}         

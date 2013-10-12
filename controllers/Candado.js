@@ -10,15 +10,12 @@ module.exports = function(models,app){
 	}
 	//cargar pagina login
 	this.loginGet = function(req,res){
-<<<<<<< HEAD
 		res.render('./login');
-=======
 		if(req.session.isAdmin == true){
 			res.redirect('/panel');
 		}else{
 			res.render('./login');
 		}	
->>>>>>> horarios bonito
 	}
 	//ejecutar login
 	this.validar = function(req,res){
@@ -43,7 +40,7 @@ module.exports = function(models,app){
 				console.log("Password incorrect");
 		}
 		}else{
-			console.log("Error de existencia de collecion.");
+			console.log("Error de existencia de colleccion.");
 			res.redirect('/login');
 		}
 	

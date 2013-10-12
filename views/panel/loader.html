@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block nav %}
+
+{% parent %}
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+		<h1>P A N E L</h1>
+		<a href="{{ routes.panel }}">Panel</a>
+		<ul>
+			<script type="text/javascript">
+			</script>
+			{% for doc in docs %}
+			  <li{% if loop.first %} class="first"{% endif %}>
+			    {{ doc }}
+			  </li>
+			{% endfor %}
+		</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}         
+      
