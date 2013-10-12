@@ -13,6 +13,7 @@ var express = require('express')
  // Cargar modelos
  var models = {};
  models.Usuario = require('./models/Usuario')(mongoose, models).model;
+ models.Profesor = require('./models/Profesor')(mongoose, models).model;
  
  app.locals({
  	

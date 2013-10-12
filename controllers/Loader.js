@@ -54,16 +54,14 @@ module.exports = function(models, app){
 
             	profe.save(function (err) {
                 if (err) {
-                	return handleError(err)
-           		 }else{
-           		 	console.log(profe + " guardado satisfactoriamente.")
+                	return handleError(err);
            		 	 }
            		 }); 
 
             	res.render('./panel/loader',{
 	        	isAdmin: req.session.isAdmin,
 	        	data: req.session.user,
-	        	docs: doc
+	        	docs: docs
 	        	});
 				//facultades
 				//var attr_2 = attr_doc[1]		
