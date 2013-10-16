@@ -38,7 +38,6 @@ module.exports = function(models, app){
 			var datos = data.replace(/\r\n\r\n|\n\n|\r\r/g,".");
 
 			var docs = datos.split(".");
-			console.log(docs.length);
 
 			for(i=0;i<docs.length;i++){
 				var one_doc = docs[i];
@@ -47,25 +46,37 @@ module.exports = function(models, app){
 				var attr_1 = attr_doc[0];
 				var nombres = attr_1.split(",");
 
+				//link foto
+				var f_letter = nombres[1].substr(0,1);
+				var f_last_name = nombres[0].split(" ");
+
+				var foto = f_letter + f_last_name[0];
+
+				foto = foto.toLowerCase() + ".jpg";
+
+				//facultades
+				var attr_2 = attr_doc[1]
+				var facus = attr_2.split(",");	
+				console.log(facus);
+
 				var profe = new models.Profesor({
-                nombre: nombres[0],
-                apellido: nombres[1]
+                nombre: nombres[1],
+                apellido: nombres[0],
+                faculta: facus,
+                picture: foto
             	});
 
             	profe.save(function (err) {
                 if (err) {
                 	return handleError(err);
            		 	 }
-           		 }); 
-
-            	res.render('./panel/loader',{
+           		 }); 		
+			}
+			res.render('./panel/loader',{
 	        	isAdmin: req.session.isAdmin,
 	        	data: req.session.user,
 	        	docs: docs
 	        	});
-				//facultades
-				//var attr_2 = attr_doc[1]		
-			}
 		});
       
 
