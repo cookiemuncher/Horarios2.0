@@ -50,7 +50,7 @@ module.exports = function(models, app){
 				var f_letter = nombres[1].substr(0,1);
 				var f_last_name = nombres[0].split(" ");
 
-				var foto = f_letter + f_last_name[0];
+				var foto = f_letter + f_last_name[0] + f_last_name[1].substr(0,2);
 
 				foto = foto.toLowerCase() + ".jpg";
 
