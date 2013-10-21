@@ -14,6 +14,7 @@ var express = require('express')
  var models = {};
  models.Usuario = require('./models/Usuario')(mongoose, models).model;
  models.Profesor = require('./models/Profesor')(mongoose, models).model;
+ models.Curso = require('./models/Curso')(mongoose,models).model;
  
  app.locals({
  	
@@ -21,12 +22,11 @@ var express = require('express')
  		login: 		'/login',
  		logout: 	'/logout',
  		panel: 		'/panel',
-    loader:   '/panel/loader', 
+    profesores: '/panel/profesores',
+    profesor:   '/panel/profesores/:id',
+
     load:     '/panel/load',
- 		profeJson:  '/profesor.json',
- 		profeRemove:'/profesor/:id/remove',
- 		profeUpdate:'/profesor/:id/update',
- 		profeCreate:'/profesor/:id/create'
+    load2:    '/panel/load2',
  	}
  });
  // Cargar controladores
@@ -36,8 +36,6 @@ var express = require('express')
  // Cargar inicio
 
  app.get('/', function(req, res){
- 	 console.log(req.session.isAdmin);
- console.log(req.session.user);
 	res.render('index',{
 		title: 'A L E N G I',
 		isAdmin: req.session.isAdmin,
@@ -46,8 +44,12 @@ var express = require('express')
  });
  // Iniciar routes y controllers
  app.get(app.locals.routes.panel, candado.checkAuth, panel.panelGet);
- app.get(app.locals.routes.loader, candado.checkAuth, loader.loaderGet);
+ app.get(app.locals.routes.profesores, candado.checkAuth, panel.readProfesores);
+ app.get(app.locals.routes.profesor, candado.checkAuth, panel.readProfesor);
+
  app.get(app.locals.routes.load, loader.loadProfes);
+ app.get(app.locals.routes.load2, loader.loadCursos);
+
  app.get(app.locals.routes.logout, candado.logout);
  app.get(app.locals.routes.login, candado.loginGet);
  app.post(app.locals.routes.login, candado.validar);

@@ -1,36 +1,46 @@
 module.exports = function(models, app){
+	var fs = require('fs');
 
-	 this.loaderGet = function(req, res){
-	 	var fs = require('fs');
 
-		fs.readFile('profesores.txt','utf8',function(err,data){
-			if(err){
+    this.loadCursos = function(req, res){
+    	fs.readFile('cursos.txt','utf8',function(err,data){
+    		if(err){
 				return console.log(err);
 			}
-			var datos = data.replace(/\r\n\r\n|\n\n|\r\r/g,".");
 
-			var doc = datos.split(".");
-				res.render('./panel/loader',{
-	        	isAdmin: req.session.isAdmin,
-	        	data: req.session.user,
-	        	docs: doc
-	        	});
+			var docs = data.split(/\r\n|\n|\r/g);
 
-			for(i=0;i<5;i++){
-				var inutil = doc[i];
-				var attr = inutil.split(/\r\n|\n|\r/g,"|");
-				for(j=0;j<2;j++){
-					var inutil2 = attr[j];
-				}
+			for(i=0;i<docs.length;i++){
+				var datos = docs[i].split('|');
+
+				var ciclex = datos[0]
+				   ,cod = datos[1]
+				   ,facus = datos[2].split(",")
+				   ,nom = datos[3]
+				   ,cred = datos[4];
+
+				 var  curso = new models.Curso({
+				 	nombre:nom,
+					ciclo: ciclex,
+					codigo: cod,
+					faculta: facus,
+					creditos: ciclex
+				 }); 
+
+				 curso.save(function (err) {
+	                if (err) {
+	                	return handleError(err);
+	           		 	 }
+	           		 }); 				
 			}
-		});
-       
-        
+			res.render('./panel',{
+	        	isAdmin: req.session.isAdmin,
+	        	});		
+    	});
+    	console.log('Carga de cursos completada!');
     };
 
     this.loadProfes = function(req, res){
-    	var fs = require('fs');
-
 		fs.readFile('profesores.txt','utf8',function(err,data){
 			if(err){
 				return console.log(err);
@@ -67,19 +77,15 @@ module.exports = function(models, app){
             	});
 
             	profe.save(function (err) {
-                if (err) {
-                	return handleError(err);
-           		 	 }
-           		 }); 		
+	                if (err) {
+	                	return handleError(err);
+	           		 	 }
+	           		 }); 		
 			}
-			res.render('./panel/loader',{
+			res.render('./panel',{
 	        	isAdmin: req.session.isAdmin,
-	        	data: req.session.user,
-	        	docs: docs
 	        	});
 		});
-      
-
     };
 
     return this;

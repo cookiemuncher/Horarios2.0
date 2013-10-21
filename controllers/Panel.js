@@ -8,5 +8,27 @@ module.exports = function(models, app){
         });
     };
 
+     this.readProfesores = function(req, res){
+     	return models.Profesor.find(function(err,profesors){
+     		if(!err){
+     			return res.send(profesors);
+     		}else{
+     			return console.log(err);
+     		}	
+     	});
+     }
+
+     this.readProfesor = function(req, res){
+     	return models.Profesor.findById(req.params.id, function(err,profesor){
+     		console.log("entro");
+     		if(!err){
+     			return res.send(profesor);
+     			console.log("fun" + profesor);
+     		}else{
+     			return console.log(err);
+     		}	
+     	});
+     }
+
     return this;
 }
