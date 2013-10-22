@@ -5,9 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     </head>
-    <body style="padding: 10px;">
-        <div class="nav pull-right">
+    <body style="padding-top: 70px;">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+       <div class="nav pull-right">
             {% block nav %}
             {% if isAdmin %}
             <span>{{data.firstname}}</span>
@@ -27,13 +29,12 @@
             {% endif %}
             {% endblock nav %}
         </div>
-
+    </nav>
 
         <div style="width: 900px; margin: auto;">
         {% block content %}{% endblock content %}
         </div>
         
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
     </body>
 </html>

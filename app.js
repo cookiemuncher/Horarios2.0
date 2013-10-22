@@ -22,6 +22,9 @@ var express = require('express')
  		login: 		'/login',
  		logout: 	'/logout',
  		panel: 		'/panel',
+    panelMain:'/panel/Main',
+    panelQ:   '/panel/query/:dato',
+
     profesores: '/panel/profesores',
     profesor:   '/panel/profesores/:id',
 
@@ -44,8 +47,10 @@ var express = require('express')
  });
  // Iniciar routes y controllers
  app.get(app.locals.routes.panel, candado.checkAuth, panel.panelGet);
- app.get(app.locals.routes.profesores, candado.checkAuth, panel.readProfesores);
- app.get(app.locals.routes.profesor, candado.checkAuth, panel.readProfesor);
+ app.get(app.locals.routes.panelMain, candado.checkAuth, panel.mainGet);
+ app.post(app.locals.routes.panelQ, panel.query);
+ //app.get(app.locals.routes.profesores, candado.checkAuth, panel.readProfesores);
+ //app.get(app.locals.routes.profesor, candado.checkAuth, panel.readProfesor);
 
  app.get(app.locals.routes.load, loader.loadProfes);
  app.get(app.locals.routes.load2, loader.loadCursos);

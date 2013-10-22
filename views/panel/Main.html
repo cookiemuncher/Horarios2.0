@@ -1,0 +1,42 @@
+{% extends './layout.html' %}
+{% block nav %}
+
+{% parent %}
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+	  <div class="col-md-6">
+	  	<div class="input-group">
+		  <span class="input-group-addon">@</span>
+		  <input type="text" class="form-control" placeholder="Username">	  
+		</div>
+		<label></label>
+	  </div>
+	  <div class="col-md-6">
+	  	<div class="panel panel-default">
+		  <div class="panel-body">
+		    Basic panel example
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+<script type="text/javascript">
+$("input").keyup(function(){
+	var dato = $(this).val();
+  $("label").html(dato);
+
+
+jQuery.get("panel/query/" + dato, function(data, textStatus, jqXHR) {
+    console.log("Get resposne:");
+    console.dir(data);
+    console.log(textStatus);
+    console.dir(jqXHR);
+});
+
+
+});
+</script>
+{% endblock %}   
