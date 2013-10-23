@@ -15,9 +15,13 @@ module.exports = function(models, app){
     }
 
     this.query = function(req, res){
-        datos = req.params.datos:
-        model.findOne({datos: new RegExp('^'+name+'$', "i")}, function(err, doc) {
-          //Do your action here..
+        dato = req.params.dato;
+        return models.Profesor.find({nombre: new RegExp('^' + dato, "i")}, function(err, doc){
+          if(!err){
+                return res.send(doc);
+            }else{
+                return console.log(err);
+            }
         });
     }
 

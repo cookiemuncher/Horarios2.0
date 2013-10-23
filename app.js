@@ -48,7 +48,7 @@ var express = require('express')
  // Iniciar routes y controllers
  app.get(app.locals.routes.panel, candado.checkAuth, panel.panelGet);
  app.get(app.locals.routes.panelMain, candado.checkAuth, panel.mainGet);
- app.post(app.locals.routes.panelQ, panel.query);
+ app.get(app.locals.routes.panelQ, panel.query);
  //app.get(app.locals.routes.profesores, candado.checkAuth, panel.readProfesores);
  //app.get(app.locals.routes.profesor, candado.checkAuth, panel.readProfesor);
 

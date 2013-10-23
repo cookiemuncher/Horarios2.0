@@ -3,9 +3,18 @@
     <head>
         <title>{{ title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="/css/custom.css" rel="stylesheet" media="screen">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="/js/vendor/underscore.js"></script>
+        <script src="/js/vendor/backbone.js"></script>
+        <script src="/js/vendor/swig.js"></script>
+
+        <script src="/js/init.js"></script>
+        <script src="/js/backbone/models/profesor.js"></script>
+        <script src="/js/backbone/collections/profesors.js"></script>
+        <script src="/js/backbone/views/profesor.js"></script>
+        
     </head>
     <body style="padding-top: 70px;">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -34,7 +43,7 @@
         <div style="width: 900px; margin: auto;">
         {% block content %}{% endblock content %}
         </div>
-        
-        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
     </body>
 </html>
