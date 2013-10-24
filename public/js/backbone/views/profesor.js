@@ -1,9 +1,10 @@
 Alengi.Views.ProfesorView = Backbone.View.extend({
 	events:{
-		"click > #r_dato" : "navigate"
+		"click > td" : "navigate",
+		"click > td" : "detalle"
 	},
 	className:"",
-	tagName:"li",
+	tagName:"tr",
 
 	initialize : function(model){
 		var self = this;
@@ -14,10 +15,18 @@ Alengi.Views.ProfesorView = Backbone.View.extend({
 		});
 
 		this.template = swig.compile($("#r_dato").html());
+		this.templateDetalle = swig.compile($("#r_detalle").html());
 	},
+
 	navigate : function(){
-		Backbone.history.navigate('profesor/'+ this.model.get('nombre'), {trigger:true});
+		console.log("funciona");
+		Backbone.history.navigate('panel/main/'+ this.model.get('_id'), {trigger:true});
 	},
+
+	detalle : function(){
+
+	},
+
 	render: function(data){
 		var self = this;
 		var locals ={

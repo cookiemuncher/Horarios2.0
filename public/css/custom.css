@@ -1,4 +1,16 @@
+table{
+	width: 100%;
+}
+
 #p1{
 	height: 700px;
 	overflow: auto;
 }
+
+td{
+	cursor: pointer;
+}
+td:hover{
+	color:hotpink;
+}
+

@@ -21,12 +21,12 @@
 	  	<div class="col-md-6">
 	  	  <div class="panel panel-default">
 		    <div class="panel-body" id="p1">
-		      <ul id="resul"> </ul>
+		      <table id="resul"> </table> <!-- template r_dato -->
 		    </div>
 		  </div>
 	  	</div>
 	  	<div class="col-md-6">
-	  	  <div class="panel panel-default">
+	  	  <div class="panel panel-default" id="resul_d"> <!-- template r_detalle -->
 		    <div class="panel-body">
 		      Basic panel example 2
 		    </div>
@@ -37,9 +37,17 @@
 
 {% raw %}
 <script id="r_dato" type="text/template">
-<li>
-{{post.apellido}}
-</li>
+<td>{{post.apellido}}</td>
+<td class="right"><a href="#">Editar </a></td> 
+<td class="right"><a href="#"> Eliminar</a></td>
+</script>
+
+<script id="r_detalle" type="text/template">
+   <td><img href="{{post.picture}}" /></td><td></td>
+   <td>Nombre: </td><td>{{post.nombre}}</td>
+   <td>Apellido: </td><td>{{post.apellido}}</td>
+   //<td>Faculta</td><td>{{post.faculta}}</td>
+   //<td>Cursos</td><td>{{post.cursos}}</td> 
 </script>
  {% endraw %}
 
