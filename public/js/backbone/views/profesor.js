@@ -1,7 +1,6 @@
 Alengi.Views.ProfesorView = Backbone.View.extend({
 	events:{
-		"click > td" : "navigate",
-		"click > td" : "detalle"
+		"click > td" : "navigate"
 	},
 	className:"",
 	tagName:"tr",
@@ -14,6 +13,14 @@ Alengi.Views.ProfesorView = Backbone.View.extend({
 			self.render();
 		});
 
+	window.routers.on('route:root', function(){
+		self.render();
+	});
+
+	window.routes.on('route:detalle', function(){
+		self.render();
+	})
+
 		this.template = swig.compile($("#r_dato").html());
 		this.templateDetalle = swig.compile($("#r_detalle").html());
 	},
@@ -23,18 +30,23 @@ Alengi.Views.ProfesorView = Backbone.View.extend({
 		Backbone.history.navigate('panel/main/'+ this.model.get('_id'), {trigger:true});
 	},
 
-	detalle : function(){
-
-	},
-
 	render: function(data){
 		var self = this;
 		var locals ={
 			post : this.model.toJSON()
 		};
 
-		this.$el.html(this.template(locals));
-
+			if(window.app.state === "detalle"){
+				if(window.app.article === this.model.get('_id')){
+					this.$el.show();
+					this.$el.html(this.templateDetalle(locals));
+				}else{
+					this.$el.hide();
+					this.$el.html("");
+				}
+			}else{
+				this.$el.html(this.template(locals));
+			}
 
 		return this;
 	}

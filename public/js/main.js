@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	window.routers = new Alengi.Routers.BaseRouter();
 	window.collections.profesors = new Alengi.Collections.ProfesorsCollection;
 	
 	$("input").keyup(function(){
