@@ -22,8 +22,8 @@ var express = require('express')
  		login: 		'/login',
  		logout: 	'/logout',
  		panel: 		'/panel',
-    panelMain:'/panel/Main',
-    panelQ:   '/panel/query/:dato',
+    panelMain:'/panel/main',
+    panelQ:   '/panel/main/query/:dato',
 
     profesores: '/panel/profesores',
     profesor:   '/panel/profesores/:id',
