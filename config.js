@@ -1,9 +1,17 @@
-module.exports = function(app, express, mongoose, cons, swig, MongoStore,path){
+module.exports = function(app, express, mongoose, cons, swig, MongoStore,path, i18n){
 
 	app.use(express.static(path.join(__dirname, 'public')));
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());	   //?
 	app.use(express.methodOverride()); //?
+
+  //conf i18n
+   i18n.expressBind(app, {
+        locales: ['es', 'en'],
+        extension: '.js',
+        directory: './locales'
+    });
+
 	//conf engine swig
 	app.engine('.html', cons.swig);
     app.set('view engine', 'html');

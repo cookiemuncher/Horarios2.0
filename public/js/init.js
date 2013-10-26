@@ -10,3 +10,4 @@ window.routers = {};
 window.plugs = {};
 window.views = {};
 window.collections = {};
+window.models = {};

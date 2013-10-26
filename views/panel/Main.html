@@ -10,13 +10,35 @@
 	  <div class="col-md-6">
 	  	<div class="input-group">
 		  <span class="input-group-addon">@</span>
-		  <input type="text" class="form-control" placeholder="Username">	  
+		  <input id="lupa" type="text" class="form-control" placeholder="Username">	  
 		</div>
 		<label></label>
 	  </div>
-	  <div class="col-md-6">
-	  </div>
-	</div>
+	  <div class="col-md-3">
+	  	<a class="btn btn-default" href="#">{{ __("Crear Profesor") }}</a>
+	   </div>
+	   <div class="col-md-3">	
+	  	<a class="btn btn-default" href="#">{{ __("Crear Curso") }}</a>
+	 	</div>
+	 </div>	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="oR" id="r1" value="o1" checked>
+			    {{ __("Por profesores") }}
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="oR" id="r2" value="o2">
+			    {{ __("Por Curso") }}
+			  </label>
+			</div>
+		</div>
+		<div class="col-md-6"> </div>
+	</div> 	
+	
 	<div class="row">
 	  	<div class="col-md-6">
 	  	  <div class="panel panel-default">
@@ -26,9 +48,8 @@
 		  </div>
 	  	</div>
 	  	<div class="col-md-6">
-	  	  <div class="panel panel-default" id="resul_d"> <!-- template r_detalle -->
-		    <div class="panel-body">
-		      Basic panel example 2
+	  	  <div class="panel panel-default" > <!-- template r_detalle -->
+		    <div class="panel-body" id="resul_d">
 		    </div>
 		  </div>
 	  	</div>
@@ -37,17 +58,52 @@
 
 {% raw %}
 <script id="r_dato" type="text/template">
-<td>{{post.apellido}}</td>
-<td class="right"><a href="#">Editar </a></td> 
-<td class="right"><a href="#"> Eliminar</a></td>
+<td class="detalle">{{post.apellido}}</td>
+<td><a href="#" class="editable">Editar </a></td> 
+<td><a href="#"> Eliminar</a></td>
+</script>
+
+<script id="r_dato_c" type="text/template">
+<td class="detalle">{{post.nombre}}</td>
+<td><a href="#" class="editable">Editar </a></td> 
+<td><a href="#"> Eliminar</a></td>
 </script>
 
 <script id="r_detalle" type="text/template">
-   <td><img href="{{post.picture}}" /></td><td></td>
-   <td>Nombre: </td><td>{{post.nombre}}</td>
-   <td>Apellido: </td><td>{{post.apellido}}</td>
-   //<td>Faculta</td><td>{{post.faculta}}</td>
-   //<td>Cursos</td><td>{{post.cursos}}</td> 
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <label for="inputEmail1" class="col-lg-3 control-label">Nombre</label>
+    <div class="col-lg-9">
+      <input disabled="disabled" type="text" class="form-control" id="nom" value="{{post.nombre}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-3 control-label">Apellido</label>
+    <div class="col-lg-9">
+      <input disabled="disabled" type="text" class="form-control " id="ape" value="{{post.apellido}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-3 control-label">Facultades</label>
+    <div class="col-lg-9">
+      <input disabled="disabled" type="text" class="form-control" id="fac" value="{{post.faculta}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputPassword1" class="col-lg-3 control-label">Cursos</label>
+    <div class="col-lg-9">
+      <input disabled="disabled" type="text" class="form-control" id="cur" value="{{post.cursos}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-success no-ver" id="update"> Actualizar </button>
+    </div>
+  </div>
+</form> 
+ <div class="col-md-12">
+	  	<a class="btn btn-info" href="crear-horario/{{post._id}}">Horario</a>
+	   </div>
 </script>
  {% endraw %}
 

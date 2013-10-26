@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <title>{{ title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/css/custom.css" rel="stylesheet" media="screen">
+        <script src="/js/modernizr.js"></script>
         <script src="/js/vendor/jquery-1.10.1.min.js"></script>
         <script src="/js/vendor/underscore.js"></script>
         <script src="/js/vendor/backbone.js"></script>
@@ -12,8 +13,14 @@
 
         <script src="/js/init.js"></script>
         <script src="/js/backbone/models/profesor.js"></script>
+        <script src="/js/backbone/models/curso.js"></script>
+        <script src="/js/backbone/models/horario.js"></script>
         <script src="/js/backbone/collections/profesors.js"></script>
+        <script src="/js/backbone/collections/cursos.js"></script>
         <script src="/js/backbone/views/profesor.js"></script>
+        <script src="/js/backbone/views/detalle.js"></script>
+        <script src="/js/backbone/views/curso.js"></script>
+        <script src="/js/backbone/routes/base.js"></script>
         
     </head>
     <body style="padding-top: 70px;">
@@ -21,29 +28,34 @@
        <div class="nav pull-right">
             {% block nav %}
             {% if isAdmin %}
-            <span>{{data.firstname}}</span>
+            <span>{{ __("Hola") }}, {{data.firstname}}</span>
             <a href="{{ routes.logout }}" class="btn">
-                <i class="icon-fire"></i>
-                Log out
+                {{ __("Finalizar la sesion") }}
             </a>
             {% else %}
             <a href="{{ routes.login }}" class="btn">
-                <i class="icon-user"></i>
-                Log in
+                {{ __("Entrar") }}
             </a>
             <a href="{{ routes.login }}" class="btn">
-                <i class="icon-user"></i>
-                Registrar
+                {{ __("Registrar") }}
             </a>
             {% endif %}
             {% endblock nav %}
         </div>
     </nav>
 
-        <div style="width: 900px; margin: auto;">
+        <div style="width: 1000px; margin: auto;">
         {% block content %}{% endblock content %}
         </div>
-        <script src="/js/main.js"></script>
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit"><a href="http://localhost:3000/lang/es">Español </a> | 
+            <a href="http://localhost:3000/lang/en">Ingles</a>.</p>
+      </div>
+    </div>
         <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/DnD.js"></script>
+       
     </body>
 </html>

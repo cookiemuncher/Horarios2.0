@@ -10,13 +10,13 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <form class="form-signin" action="{{ app.locals.routes.login }}" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">{{ __("Por favor, inicie sesion") }}</h2>
         <input type="text" class="form-control" placeholder="Usuario" autofocus name="usuario">
         <input type="password" class="form-control" placeholder="Password" name="password">
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> {{ __("Recordarme") }}
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">{{ __("Entrar") }}</button>
       </form>
         {% if error %}
         <br/>

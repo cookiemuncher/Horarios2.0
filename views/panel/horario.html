@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+{% block nav %}
+
+{% parent %}
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<input type="text" id="idp" value="{{profe}}" width="500px">{{profe}}</input>
+	<div class="row">
+	  <div class="col-md-3">
+	  	<div class="input-group">
+		  <span class="input-group-addon">@</span>
+		  <input id="lupa" type="text" class="form-control" placeholder="Username">	  
+		</div>
+		<label></label>
+	  </div>
+	  <div class="col-md-9">
+	  	
+	   </div>
+	   
+	 </div>	
+	 <div class="row">
+			  <div class="col-md-3">
+			  	<div class="panel panel-default">
+				    <div class="panel-body" id="p1">
+				      <table id="resul"> </table> <!-- template r_dato -->
+				    </div>
+				 </div>
+
+			  </div>
+			  <div class="col-md-9">
+			  	<div class="table-responsive">
+					  <table class="table table-bordered" id="columns">
+					    <tr><th>#</th><th>{{ __("Lunes") }}</th><th>{{ __("Martes") }}</th><th>{{ __("Miercoles") }}</th><th>{{ __("Jueves") }}</th><th>{{ __("Viernes") }}</th><th>{{ __("Sabado") }}</th></tr>
+					    <tr><td>7:00</td><td draggable="true" class="column" >  {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>8:00</td><td draggable="true" class="column" >  {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>9:00</td><td draggable="true" class="column" >  {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>10:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>11:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>12:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>13:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>14:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>15:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>16:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>17:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>18:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>19:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>20:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					    <tr><td>21:00</td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > {{Dato}} </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td><td draggable="true" class="column" > Dato </td></tr>
+					  </table>
+			    </div>
+			  </div>
+		</div>
+	 <div class="row">
+
+	 </div>
+		
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+window.models.horario = new Alengi.Models.HorarioModel;
+var modelo = window.models.horario
+hor = $("#idp").val();
+console.log(hor);
+
+var xhr = $.get("http://localhost:3000/panel/horario/" + hor);
+
+xhr.done(function(data){					
+		modelo.set(data);
+	});
+console.log(modelo);
+
+
+</script>
+{% endblock %} 

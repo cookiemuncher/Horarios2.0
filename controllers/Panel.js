@@ -14,7 +14,7 @@ module.exports = function(models, app){
         });
     }
 
-    this.query = function(req, res){
+    this.queryP = function(req, res){
         dato = req.params.dato;
         return models.Profesor.find({nombre: new RegExp('^' + dato, "i")}, function(err, doc){
           if(!err){
@@ -25,7 +25,50 @@ module.exports = function(models, app){
         });
     }
 
-     this.readProfesores = function(req, res){
+    this.queryC = function(req, res){
+        dato = req.params.dato;
+        return models.Curso.find({nombre: new RegExp('^' + dato, "i")}, function(err, doc){
+          if(!err){
+                return res.send(doc);
+            }else{
+                return console.log(err);
+            }
+        });
+    }
+
+    this.leng = function(req, res){
+        dato = req.params.dato;
+        req.session.leng = dato;
+    }
+
+
+    this.ver_H_Get = function(req, res){
+        var idp = req.params.id;
+
+        return models.Horario.findOne("idp" == idp, function(err, horario){
+            if(!err){
+                return res.send(horario);
+                
+            }else{
+                return console.log(err);
+            }
+           }); 
+    }
+
+    this.crear_H_Get = function(req, res){
+        var idp = req.params.id;
+
+        res.render('./panel/horario',{
+            isAdmin: req.session.isAdmin,
+            data: req.session.user,
+            profe: idp
+        });
+    }
+
+
+
+
+     /*this.readProfesores = function(req, res){
      	return models.Profesor.find(function(err,profesors){
      		if(!err){
      			return res.send(profesors);
@@ -44,7 +87,7 @@ module.exports = function(models, app){
      			return console.log(err);
      		}	
      	});
-     }
+     }*/
 
     return this;
 }

@@ -6,15 +6,18 @@ var express = require('express')
   , swig = require('swig')
   , server = require('http').createServer(app)
   , MongoStore = require('connect-mongo')(express)
+  , i18n = require("i18n-2")
   , path = require('path');
+
   
  // Cargar configuracion del server
- var config = require('./config.js')(app, express, mongoose, cons, swig, MongoStore, path); 
+ var config = require('./config.js')(app, express, mongoose, cons, swig, MongoStore, path, i18n); 
  // Cargar modelos
  var models = {};
  models.Usuario = require('./models/Usuario')(mongoose, models).model;
  models.Profesor = require('./models/Profesor')(mongoose, models).model;
  models.Curso = require('./models/Curso')(mongoose,models).model;
+ models.Horario = require('./models/Horario')(mongoose,models).model;
  
  app.locals({
  	
@@ -23,11 +26,13 @@ var express = require('express')
  		logout: 	'/logout',
  		panel: 		'/panel',
     panelMain:'/panel/main',
-    panelQ:   '/panel/main/query/:dato',
-
-    profesores: '/panel/profesores',
-    profesor:   '/panel/profesores/:id',
-
+    panelQp:   '/panel/qp/:dato',
+    panelQc:   '/panel/qc/:dato',
+    leng :     '/lang/:dato',
+    horario: '/panel/horario/:id',
+    crear_horario: '/panel/crear-horario/:id',
+    //profesores: '/panel/profesores',
+    //profesor:   '/panel/profesores/:id',
     load:     '/panel/load',
     load2:    '/panel/load2',
  	}
@@ -48,7 +53,12 @@ var express = require('express')
  // Iniciar routes y controllers
  app.get(app.locals.routes.panel, candado.checkAuth, panel.panelGet);
  app.get(app.locals.routes.panelMain, candado.checkAuth, panel.mainGet);
- app.get(app.locals.routes.panelQ, panel.query);
+ app.get(app.locals.routes.panelQp, panel.queryP);
+ app.get(app.locals.routes.panelQc, panel.queryC);
+ app.get(app.locals.routes.leng, panel.leng);
+ app.get(app.locals.routes.horario, candado.checkAuth, panel.ver_H_Get);
+ app.get(app.locals.routes.crear_horario, candado.checkAuth, panel.crear_H_Get);
+ 
  //app.get(app.locals.routes.profesores, candado.checkAuth, panel.readProfesores);
  //app.get(app.locals.routes.profesor, candado.checkAuth, panel.readProfesor);
 

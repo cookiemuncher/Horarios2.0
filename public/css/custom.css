@@ -7,10 +7,57 @@ table{
 	overflow: auto;
 }
 
-td{
+.detalle{
 	cursor: pointer;
 }
-td:hover{
+.detalle:hover{
 	color:hotpink;
+}
+
+.btn{
+	width: 100%;
+}
+
+.radio{
+	margin-top: -10px;
+}
+
+.no-ver{
+	display: none;
+}
+
+input[type="text"]:disabled
+{
+background:#ffd3d3;
+}
+
+#footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  float:bottom;
+}
+.container .credit {
+  margin: 20px 0;
+}
+
+/* DnD */
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+  cursor: move;
+
+}
+
+td.column{
+	margin: 10px;
+}
+
+.column.over{
+  background-color:#EFD13B;
 }
 

@@ -1,4 +1,4 @@
-Alengi.Views.ProfesorView = Backbone.View.extend({
+Alengi.Views.CursoView = Backbone.View.extend({
 	events:{
 		"click .detalle" : "detalle",
 		"click .editable" : "editable"
@@ -14,8 +14,7 @@ Alengi.Views.ProfesorView = Backbone.View.extend({
 			self.render();
 		});
 
-
-		this.template = swig.compile($("#r_dato").html());
+		this.template = swig.compile($("#r_dato_c").html());
 	},
 
 	editable : function(){
@@ -27,11 +26,6 @@ Alengi.Views.ProfesorView = Backbone.View.extend({
 		var self = this;
 		self.render("detalle");
 		
-	},
-
-	navigate : function(){
-		console.log("funciona");
-		Backbone.history.navigate('panel/main/profesor/'+ this.model.get('_id'), {trigger:true});
 	},
 
 	render: function(data){
